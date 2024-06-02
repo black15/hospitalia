@@ -1,0 +1,39 @@
+{% extends "base.html" %} 
+{% load static %}
+{% block title %}Login Page{% endblock %} 
+
+{% block content %}
+
+<!-- source:https://codepen.io/owaiswiz/pen/jOPvEPB -->
+<div class="min-h-screen bg-[#1B2631] text-gray-50 flex justify-center">
+    <div class="max-w-screen-xl m-0 sm:m-10 bg-gray-700/20 border-2 border-gray-700 shadow sm:rounded-lg flex justify-center flex-1">
+        <div class="lg:w-1/2 xl:w-5/12 p-6 sm:p-12 my-auto">
+            <div>
+                <div class='text-center text-2xl font-bold'><span class='text-[#72C7B5]'>H</span>ospitalia+</div>
+            </div>
+            <div class="mt-12 flex flex-col items-center">
+                <h1 class="text-2xl xl:text-3xl font-bold mb-4">
+                    Sign up for a free account
+                </h1>
+                <h2 class='max-w-xl text-gray-300 text-md'>Select bellow the type of account you want to create</h2>
+                <div class="w-full flex flex-col gap-4 md:flex-row items-center justify-around mt-8 mx-auto">
+                    <a class='flex items-center gap-2 text-lg font-semibold text-gray-50 bg-blue-700/80 py-4 px-6 rounded-lg transition duration-300 ease-in-out hover:bg-blue-700' href='{% url "account:doctor_register" %}'>
+                        <span>Iam a Doctor</span>
+                        <img class='w-10 h-10' src='{% static "img/doctor.svg" %}' />                    
+                    </a>
+                    <a class='flex items-center gap-2 text-lg font-semibold text-gray-50 bg-green-700/80 py-4 px-6 rounded-lg transition duration-300 ease-in-out hover:bg-green-700' href='{% url "account:patient_register" %}'>
+                        <span>Iam a Patient</span>
+                        <img class='w-10 h-10' src='{% static "img/patient.svg" %}' />
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="flex-1 bg-[#FFFFFF] text-center hidden lg:flex">
+            <div class="m-12 xl:m-16 w-full bg-contain bg-center bg-no-repeat"
+                style="background-image: url('{% static "img/docpat.svg" %}');">
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

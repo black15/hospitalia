@@ -1,0 +1,52 @@
+{% extends "base.html" %} 
+{% load static %}
+{% block title %}Register Page{% endblock %} 
+
+{% block content %}
+
+<div class="min-h-screen bg-[#1B2631] text-gray-50 flex justify-center">
+    <div class="max-w-screen-xl m-0 sm:m-10 bg-gray-700/30 border-2 border-gray-800 shadow sm:rounded-lg flex justify-center flex-1">
+        <div class="lg:w-1/2 xl:w-5/12 p-6 sm:p-12">
+            <div>
+                <div class='text-center text-2xl font-bold'><span class='text-[#72C7B5]'>H</span>ospitalia+</div>
+            </div>
+            <div class="mt-12 flex flex-col items-center">
+                <h1 class="text-2xl xl:text-3xl font-extrabold">
+                    {% if usertype == 'patient' %}<span class='text-green-600/90'>Patient</span> {% else %}<span class='text-blue-600/90'>Doctor</span> {% endif %}Sign up
+                </h1>
+                
+                <form class='w-full mx-auto max-w-sm px-6' method='post'>
+                    {% csrf_token %}
+                    {% for field in form %}
+                        <p>{{field}}</p>
+                    {% endfor %}
+                    <button
+                            class="mt-5 tracking-wide font-semibold bg-[#D7F6ED] text-gray-800 w-full py-4 rounded-lg hover:bg-[#C7EFE3] transition-all duration-300 ease-in-out flex items-center justify-center focus:shadow-outline focus:outline-none" type='submit'>
+                            <svg class="w-6 h-6 -ml-2" fill="none" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M16 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2" />
+                                <circle cx="8.5" cy="7" r="4" />
+                                <path d="M20 8v6M23 11h-6" />
+                            </svg>
+                            <span class="ml-3">
+                                Sign Up
+                            </span>
+                        </button>
+                </form>
+            </div>
+        </div>
+            {% if usertype == 'doctor' %}
+                <div class="flex-1 bg-[#D7F6ED] text-center hidden lg:flex">
+                    <div class="m-12 xl:m-16 w-full bg-contain bg-center bg-no-repeat" style="background-image: url('{% static "img/docgroup.svg" %}');">
+                    </div>
+                </div>
+            {% else %}
+                <div class="flex-1 bg-[#FFFFFF] text-center hidden lg:flex">
+                    <div class="m-12 xl:m-16 w-full bg-contain bg-center bg-no-repeat" style="background-image: url('{% static "img/patientanddoc.svg" %}');">
+                    </div>
+                </div>
+            {% endif %}
+        
+    </div>
+</div>
+{% endblock %}
